@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <h1 class="page-title">{{ length }} results for "{{ text }}"</h1>
+
+    <ol>
+        {% for person in people %}
+        <li>
+            <a href="{{ person.url }}">{{ person.name }}</a>, born on
+            {{ person.birthdate }}
+        </li>
+        {% endfor %}
+    </ol>
+
+</div>
+
+{% endblock %}

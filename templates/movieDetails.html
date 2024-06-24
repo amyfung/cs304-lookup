@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main">
+    <h1 class="title">{{ movie.title }}</h1>
+    <div class="details">
+        <p><b>{{ movie.title }}</b> is a movie added by {{ addedby }} and was 
+            released in {{ movie.release }}.
+            {% if director.name %}
+            This movie was directed by 
+            <a href="{{url_for('showPerson', person_id_number=director.nm)}}">
+                {{ director.name }}</a>.
+            {% endif %}
+        </p>
+        {% if cast %}
+        <p> Out of the people in the WMDb, the following appeared in 
+            <b>{{ movie.title }}</b>: </p>
+        <ol>
+            {% for member in cast %}
+            {% if member.name != director.name %}
+            <li>
+                <a href="{{ member.url }}">{{ member.name }}</a>, born on
+                {{ member.birthdate }}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p> 
+            No cast members from <b>{{ movie.title }}</b> are credited in WMDb. 
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

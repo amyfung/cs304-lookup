@@ -1,0 +1,208 @@
+@font-face {
+    font-family: "Amazon Ember Heavy";
+    src: url("/assets/Ember Display/AmazonEmberDisplay_He.ttf");
+}
+
+#searchbar,
+#search-type,
+select,
+#search-button {
+    font-family: Georgia, Arial, Cambria, Cochin, Georgia, 'Times New Roman', serif
+}
+
+.main {
+    margin-left: 320px;
+    padding-left: 20px;
+}
+
+.about,
+.details,
+li,
+p {
+    font-family: Arial, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+#messages,
+#flash-msg {
+    font-family: Arial, Georgia, "Times New Roman";
+    font-size: 20pt;
+    vertical-align: center;
+}
+
+/* base.html */
+#examples {
+    font-family: Arial;
+    font-size: 18px;
+}
+
+#magnifying {
+    float: left;
+    width: 80px;
+    height: auto;
+    text-align: left;
+    /* padding-top: 20px;
+    */
+    padding-right: 10px;
+    margin-right: 20px;
+}
+
+#ex-container {
+    display: inline-block;
+    width: 100%;
+}
+
+li:not(:first-of-type) {
+    padding-top: .5em;
+}
+
+/* Titles */
+.page-title,
+.person,
+.title {
+    font-family: Georgia;
+    font-weight: 100;
+}
+
+.page-title:after,
+.title:after,
+.person:after {
+    content: ' ';
+    display: block;
+    border: 1.5px solid darkgray;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/* Sidebar */
+
+#home {
+    text-decoration: none;
+}
+
+#wmdb-title {
+    font-family: Impact, HelveticaNeue-CondensedBold, sans-serif;
+    font-size: 50pt;
+    text-shadow: 0 0 .15em #fff;
+    text-decoration: none;
+    vertical-align: bottom;
+    display: inline-block;
+    padding: .25em .35em;
+    border-radius: .15em;
+    background-color: #F5C518;
+    color: #000000;
+    text-align: center;
+}
+
+#wmdb-container {
+    text-align: center;
+    margin: auto;
+}
+
+.sidebar {
+    width: 320px;
+    height: 100%;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    background-color: #f8f8f8;
+    position: fixed;
+}
+
+.sidebar h1 {
+    margin: auto;
+}
+
+.search {
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+}
+
+#searchbar {
+    width: 255px;
+    height: 44px;
+    font-size: 16px;
+    padding-left: 15px;
+    margin-left: auto;
+    border: .5px solid darkgray;
+    border-radius: 24px;
+}
+
+#search-term,
+#search-type,
+#order-by {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.form-label {
+    font-size: 14px;
+    line-height: normal;
+    font-family: Arial;
+    margin: auto;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#kind,
+#order {
+    height: 34px;
+    text-align: center;
+    border: .5px solid darkgray;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+    font-size: 15px;
+}
+
+#submit {
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#search-button {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: .5px solid darkgray;
+    border-radius: 24px;
+    display: inline-block;
+    font-size: 12pt;
+}
+
+
+#current {
+    font-family: Arial, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#all {
+    text-align: center;
+    font-size: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+/* End of Sidebar */

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+<h1 class="page-title">{{ length }} results for "{{ text }}"</h1>
+
+    <ol>
+        {% for movie in results %}
+        <li>
+            <a href="{{ movie.url }}">{{ movie.title }}, 
+            released in {{ movie.release }}</a>
+        </li>
+        {% endfor %}
+    </ol>
+
+</div>
+{% endblock %}

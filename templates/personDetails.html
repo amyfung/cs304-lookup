@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <h1 class="person">{{ person.name }}</h1>
+    <div class="details">
+        <p>
+            <b>{{ person.name }}</b> was born on {{ person.birthdate }} and was
+            added to the WMDb by {{ addedby }}.
+        </p>
+        {% if movies %}
+        <p><b>{{ person.name }}</b> is credited for the following
+            films in the WMDb:</p>
+        <ol>
+            {% for credit in movies %}
+            <li>
+                <a href="{{ credit.url }}">{{ credit.title }}</a>, released in
+                {{ credit.release }}
+            </li>
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p><b>{{ person.name }}</b> is not credited for any movies in the
+            WMDb.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <title>WMDb Lookup</title>
+    {% block headstuff %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block sidebar %}
+    <div class="sidebar">
+        <a href="{{url_for('index')}}" id="home">
+            <div id="wmdb-container">
+                <h2 id="wmdb-title">WMDb</h2>
+            </div>
+        </a>
+        <form class="search" method="GET" action="{{url_for('query')}}">
+            <div id="search-term">
+                <label for="searchbar" class="form-label">
+                    Search the WMDb
+                </label>
+                <input 
+                type="text" 
+                name="query" 
+                id="searchbar" 
+                placeholder="ex. Keanu Reeves">
+            </div>
+            <div id="search-type">
+                <label for="kind" class="form-label">
+                    Search Type (required)
+                </label>
+                <br>
+                <select id="kind" class="kind" name="kind" required>
+                    <option value>search type</option>
+                </select>
+            </div>
+            <div id="order-by">
+                <label for="order" class="form-label">
+                    Sort By
+                </label>
+                <br>
+                <select id="order" class="order" name="order">
+                    <option value>select search type first</option>
+                </select>
+            </div>
+            <div id="submit">
+                <input type="submit" id="search-button" value="Search">
+            </div>
+        </form>
+        <div id="current">
+            <p>
+                As of {{ now }}, there are <b>{{ numPeople }} people</b> and
+                <b>{{ numMovies }} movies</b> in the WMDb.
+            </p>
+            <p>
+                Use WMDb lookup to search for them.
+            </p>
+        </div>
+        <div id="all">
+            <p>
+                <a href="{{url_for('query', query='', kind='person')}}">
+                    See All People
+                </a>
+            </p>
+            <p>
+                <a href="{{url_for('query', query='', kind='movie')}}">
+                    See All Movies
+                </a>
+            </p>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    <div class="main">
+        <h1 class="page-title">Welcome to the Wellesley Movie Database</h1>
+        <div id="ex-container">
+            <div>
+                <img id="magnifying" 
+                    src="{{url_for('static', filename='magnifying_logo.png')}}" 
+                    alt="WMDb logo">
+            </div>
+            <div id="examples">
+                <p>
+                    <b>Random featured person:</b>
+                    <a href="{{ personURL }}">{{ person.name }}</a>
+                    , who was born on {{ person.birthdate }}.
+                </p>
+                <p>
+                    <b>Random featured movie:</b>
+                    <a href="{{ movieURL }}">{{movie.title }}</a>,
+                    which was released in {{ movie.release }}.
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block js %}
+    <script>
+        var orderBy = {
+            "person": ["name", "oldest to youngest", "youngest to oldest"],
+            "movie": ["release year (oldest first)", "release year (newest first)", "movie title"]
+        }
+
+        window.onload = function () {
+            var kind = document.getElementById("kind");
+            var order = document.getElementById("order");
+
+            for (var x in orderBy) {
+                kind.options[kind.options.length] = new Option(x);
+            }
+            kind.onchange = function () {
+                order.length = 1;
+                for (var y in orderBy[this.value]) {
+                    order.options[order.options.length] =
+                        new Option(orderBy[this.value][y]);
+                }
+            }
+        }
+    </script>
+    {% endblock %}
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
+</body>
+</html>
